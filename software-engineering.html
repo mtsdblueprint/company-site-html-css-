@@ -31,7 +31,7 @@
                 <h4>Web Site & System Dev</h4>
                 <p class="price"><span>Starting from</span> LKR <span id="web-dynamic-price">200,000</span></p>
                 <p class="desc">Custom, responsive web applications, e-commerce stores, and enterprise management systems built for performance.</p>
-                <a href="mailto:sumuduhasinika431@gmail.com?subject=Request%20Web%20Site%20%26%20System%20Development" class="btn request-btn">Request This</a>
+                <button class="btn request-btn" onclick="openWhatsApp('Request Web Site & System Development')">Request This</button>
             </div>
 
             <div class="inner-price-card premium animate-card">
@@ -43,7 +43,7 @@
                 <h4>Mobile App Development</h4>
                 <p class="price"><span>Starting from</span> LKR <span id="mobile-dynamic-price">250,000</span></p>
                 <p class="desc">High-performance iOS and Android mobile applications crafted using robust and modern architectures.</p>
-                <a href="mailto:sumuduhasinika431@gmail.com?subject=Request%20Mobile%20App%20Development" class="btn request-btn">Request This</a>
+                <button class="btn request-btn" onclick="openWhatsApp('Request Mobile App Development')">Request This</button>
             </div>
 
         </div>
@@ -113,28 +113,26 @@
     </section>
 
     <script>
+        function openWhatsApp(message) {
+            const phone = '94786037551';
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.location.href = url;
+        }
         document.addEventListener('DOMContentLoaded', () => {
             const techButtons = document.querySelectorAll('.tech-btn');
-            
             // Web App Elements
             const webPriceDisplay = document.getElementById('web-dynamic-price');
             const webTechDisplay = document.getElementById('web-dynamic-tech');
-            
             // Mobile App Elements
             const mobilePriceDisplay = document.getElementById('mobile-dynamic-price');
             const mobileTechDisplay = document.getElementById('mobile-dynamic-tech');
-
             techButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const type = button.getAttribute('data-type');
                     const targetPrice = button.getAttribute('data-price');
                     const targetTech = button.getAttribute('data-tech');
-
-                    // අදාළ කාණ්ඩයේ බටන්ස් විතරක් active/deactive කරන්න
                     document.querySelectorAll(`.tech-btn[data-type="${type}"]`).forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-
-                    // Web ද Mobile ද කියලා චෙක් කරලා අදාළ කාඩ් එක විතරක් අප්ඩේට් කරනවා
                     if (type === 'web') {
                         webPriceDisplay.style.opacity = '0';
                         webTechDisplay.style.opacity = '0';
